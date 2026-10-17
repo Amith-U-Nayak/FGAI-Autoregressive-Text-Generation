@@ -126,6 +126,27 @@ The models frequently produced Shakespeare-style vocabulary and short recognizab
 
 Distinct-1 and Distinct-2 measure lexical variation rather than semantic coherence.
 
+### Detailed Qualitative Comparison
+
+The generated text was examined for coherence, contextual consistency, lexical diversity and repetition across three seed sequences and three sampling temperatures.
+
+| Model | Distinct-1 at T=0.5 | Distinct-1 at T=1.0 | Distinct-1 at T=1.5 |
+|---|---:|---:|---:|
+| Simple RNN | 0.789 | 0.956 | 0.989 |
+| Bidirectional RNN | 0.767 | 0.967 | 1.000 |
+| LSTM | 0.789 | 0.956 | 0.967 |
+| GRU | 0.778 | 0.933 | 1.000 |
+
+The results indicate that increasing sampling temperature generally increased lexical diversity across all four models.
+
+At temperature 0.5, the Simple RNN and Bidirectional RNN showed repeated bigrams, while GRU also exhibited some repeated patterns. LSTM showed no repeated bigrams across the three sampled continuations at this temperature.
+
+At temperatures 1.0 and 1.5, no repeated bigrams were detected in the generated continuations. However, the absence of repeated bigrams does not guarantee grammatical correctness or semantic coherence.
+
+Manual inspection revealed that all four models generated recognizable Shakespeare-style expressions but struggled to maintain consistent meaning across longer passages.
+
+GRU achieved the best quantitative performance, with a test accuracy of 12.14% and perplexity of 225.97. It was therefore selected as the most effective model for this experimental configuration, while acknowledging the limitations of its generated text.
+
 ## 7. Visualizations
 
 ### Validation Loss
